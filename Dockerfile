@@ -5,7 +5,7 @@ ENV MYSQL_DATABASE intech
 # #ENV MYSQL_PASSWORD AJKuytg32
 # # Copy the Script folder to docker-entrypoint-initdb.d/ which will be 
 # # automac=tically executed during container startup
-COPY ./script/ /docker-entrypoint-initdb.d/
+COPY ./intech.sql /docker-entrypoint-initdb.d/
 
 FROM wordpress as intech-project
 COPY . /var/www/html/
