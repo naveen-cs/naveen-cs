@@ -1,0 +1,29 @@
+version: '3'
+services:
+  wp:
+    image: "intech"   #You can put in this name of Image
+    ports:  #If you want expose the port otherwise image automatically pick 80
+      - "80:80"
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.3  
+    environment:
+      WORDPRESS_DB_PASSWORD: I!@#$%gadT32CH
+  mysql:
+    image: "database"   #You can put in this name of Image
+    ports:   # If you want expose the port otherwise image automatically pick 3306
+      - "3306:3306"  
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.2
+    environment:
+      MYSQL_ROOT_PASSWORD: I!@#$%gadT32CH
+    volumes:
+      - my-datavolume:/var/lib/mysql
+volumes:
+  my-datavolume:
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
